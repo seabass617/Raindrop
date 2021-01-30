@@ -1,6 +1,6 @@
 class Ripple {
 
-  constructor(x,y){
+  constructor(x,y,c = color(255,255,255)){
     //What data does it have
     this.location = new createVector(x,y);
     this.radius = 30;
@@ -9,7 +9,7 @@ class Ripple {
     this.isAlive = true;
     this.opacity = 0.1;
     this.maxDiameter = 250;
-    this.color = color(255,255,255);
+    this.color = c;
   }
 
   //What can the ripple do

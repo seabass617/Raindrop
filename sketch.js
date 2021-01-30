@@ -1,9 +1,14 @@
 //============================================
 // Sketch File 
+// To do: Make it mobile friendly, detect display size and change parameters accordingly,
+// Add some music!
 //============================================
 
 let ripples = [];
+let colors = [];
 let switchInterval;
+let sound;
+let F;
 let toff,xoff,yoff;
 
 function windowResized() {
@@ -27,16 +32,27 @@ function setup() {
 	canvas.style('z-index', '-10');
 	background(0);
 
+	sound = loadSound('shiki.mp3', loaded);
+	f = loadSound();
+
 	toff = 0;
 	xoff = 0;
 	yoff = 1000; 
 
+	colors.push(color(255,236,25));
+	colors.push(color(255,152,0));
+	colors.push(color(255,65,45));
+
+}
+
+function loaded(){
+	sound.loop();
 }
 
 function draw() {
 	background(0);
 
-	switchInterval = Math.floor(map(noise(toff),0,1,5,20));
+	switchInterval = Math.floor(map(noise(toff),0,1,4,20));
 	//console.log(switchInterval);
 	
 	//now we need to make a perlin noise field of these, so that each frame you have anywhere between 0,2 raindrops falling down???
@@ -74,6 +90,17 @@ function draw() {
 
 	};
 
+
 	
 }
 
+function mouseClicked(){
+	// if the mouse is clicked make a ripple at that location
+	// The color of that click should be somewhere around that white yellow orange range...
+	let dropcolor = colors[Math.floor(random(3))];
+	console.log(dropcolor);
+	ripples.push(new Ripple(mouseX,mouseY,dropcolor));
+	console.log("mouse clicked");
+	
+
+}
