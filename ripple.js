@@ -1,35 +1,51 @@
 class Ripple {
-  constructor(location, c) {
+  constructor(
+    location,
+    c,
+    properties = { maxDiameter: 250, opacity: 1, thickness: 10, speed: 5 }
+  ) {
     //What data does it have
     this.location = location;
-    this.radius = 30;
+    this.radius = 10;
     this.diameter = this.radius * 2;
-    this.speed = 3; //pixels per frame
+    this.speed = properties.speed; //pixels per frame
+    this.topSpeed = properties.speed;
     this.isAlive = true;
-    this.opacity = 0.1;
-    this.maxDiameter = 250;
+    this.opacity = properties.opacity;
+    this.maxDiameter = properties.maxDiameter;
     this.color = c;
+    this.thickness = properties.thickness;
+    this.originalThickness = properties.thickness;
+    this.originalOpacity = properties.opacity;
+    this.originalSpeed = properties.speed;
   }
 
   //What can the ripple do
   display() {
     noFill();
-    stroke(this.color);
+    strokeWeight(this.thickness);
+    stroke(
+      `rgba(${this.color.r},${this.color.g},${this.color.b},${this.color.a})`
+    );
     ellipse(this.location.x, this.location.y, this.radius * 2, this.radius * 2);
   }
 
   update() {
     //every frame we want to increase the size of the ripple by speed
     this.radius = this.radius + this.speed;
-    //Do you want have it so that the opacity decreases as you approach death????
-    //You'll need map function so that you are slowing down proportionally...
-    //map your opacity to the radius
-    let opacity = map(this.radius * 2, 60, this.maxDiameter, 0, 255); // I want this opposite of this, right now it is giving
-    //me 255 when we are at max diameter, and 0 at minimum diameter
-    // if we do 255-255 we get zero
-    // 255-0 = 0
-    //255
-    this.color.setAlpha(255 - opacity);
+
+    let newOpacity =
+      1 - map(this.radius * 2, 10, this.maxDiameter, 0.0, 1.0, true);
+    this.color.a = newOpacity;
+
+    let newThickness =
+      10 - map(this.radius * 2, 10, this.maxDiameter, 1, 10, true);
+    this.thickness = newThickness;
+
+    let newSpeed =
+      this.topSpeed -
+      map(this.radius * 2, 10, this.maxDiameter, 1, this.topSpeed, true);
+    this.speed = newSpeed;
 
     this.checkState();
   }
@@ -40,11 +56,4 @@ class Ripple {
       this.isAlive = false;
     }
   }
-
-  //edge cases
-  //if the circles diameter is greater than the width of the screen stop drawing it
-
-  //edge(){
-
-  //}
 }
