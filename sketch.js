@@ -36,8 +36,8 @@ function setup() {
   drop = loadSound("./audio/drop.mp3", loaded);
 
   //Slider
-  speedSlider = createSlider(0, 10, 3, 0.1);
-  speedSlider.position(20, 50);
+  // speedSlider = createSlider(0, 10, 3, 0.1);
+  // speedSlider.position(20, 50);
 
   toff = 0;
   xoff = 0;
