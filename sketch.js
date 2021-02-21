@@ -30,8 +30,8 @@ function setup() {
   background(0);
 
   //Load the rainfall sounds
-  //sound = loadSound("shiki.mp3", loaded);
-  //f = loadSound();
+  rain = loadSound("./audio/rain.mp3", loaded);
+  drop = loadSound("./audio/drop.mp3", loaded);
 
   toff = 0;
   xoff = 0;
@@ -43,7 +43,7 @@ function setup() {
 }
 
 function loaded() {
-  sound.loop();
+  rain.loop();
 }
 
 function draw() {
@@ -75,5 +75,6 @@ function draw() {
 function mouseClicked() {
   let dropColor = colors[Math.floor(random(3))];
   // Play audio function...
+  drop.play();
   drops.push(new Drop(mouseX, mouseY, dropColor));
 }
