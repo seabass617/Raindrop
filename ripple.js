@@ -51,8 +51,7 @@ class Ripple {
   }
 
   checkState() {
-    let diameter = this.radius * 2;
-    if (diameter > this.maxDiameter) {
+    if (this.radius * 2 > this.maxDiameter - 1) {
       this.isAlive = false;
     }
   }

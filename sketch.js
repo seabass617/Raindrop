@@ -10,6 +10,8 @@ let switchInterval;
 let sound;
 let f; //what the fuck is this
 let toff, xoff, yoff;
+let speedSlider;
+let speedLow, speedHigh;
 
 function windowResized() {
   console.log("resized");
@@ -33,6 +35,10 @@ function setup() {
   rain = loadSound("./audio/rain.mp3", loaded);
   drop = loadSound("./audio/drop.mp3", loaded);
 
+  //Slider
+  speedSlider = createSlider(0, 10, 3, 0.1);
+  speedSlider.position(20, 50);
+
   toff = 0;
   xoff = 0;
   yoff = 1000;
@@ -50,7 +56,7 @@ function draw() {
   background(0);
 
   //Associate the rate of rainfall to vary according to perlin noise
-  switchInterval = Math.floor(map(noise(toff), 0, 1, 4, 20));
+  switchInterval = Math.floor(map(noise(toff), 0, 1, 4, 15));
 
   //Make 2 new drops according to our switchinterval
   if (frameCount % switchInterval == 0) {

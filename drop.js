@@ -36,6 +36,7 @@ class Drop {
       let deadcount = 0;
       for (let i = 0; i <= this.ripples.length - 1; i++) {
         let ripple = this.ripples[i];
+
         if (!ripple.isAlive) {
           deadcount++;
         }
