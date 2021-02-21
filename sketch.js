@@ -78,7 +78,7 @@ function draw() {
 }
 
 // If you click the mouse, create a drop there with random color
-function mouseClicked() {
+function touchStarted() {
   let dropColor = colors[Math.floor(random(3))];
   // Play audio function...
   drop.play();
