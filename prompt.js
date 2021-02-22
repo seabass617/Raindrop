@@ -7,8 +7,8 @@ class Prompt {
   constructor() {
     this.color = 0;
     this.location = new createVector(width / 2, height / 2);
-    this.size = 48;
     this.isAlive = true;
+    this.size = width < 400 ? 28 : 48;
   }
 
   //What can it do?
