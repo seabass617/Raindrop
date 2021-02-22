@@ -8,7 +8,7 @@ class Prompt {
     this.color = 0;
     this.location = new createVector(width / 2, height / 2);
     this.isAlive = true;
-    this.size = width < 400 ? 28 : 48;
+    this.size = width < 1000 ? 28 : 48;
   }
 
   //What can it do?
