@@ -10,7 +10,8 @@ class Drop {
 
   update() {
     // Create a ripple at the location if the counter is still under the desired value
-    // This can probably just be a for loop
+    // This can probably just be a for loop ****************
+    // Which means you will probably have to restucture this code so that it's not dependent on counter...
     if (this.counter <= this.limit - 1) {
       let currentColor = { ...this.color };
       // The new opacity will be scaled according to which ripple it is, the later the ripple was added the the array, the more transparent it will be

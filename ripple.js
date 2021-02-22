@@ -5,6 +5,7 @@ class Ripple {
     properties = { maxDiameter: 250, opacity: 1, thickness: 10, speed: 5 }
   ) {
     //What data does it have
+    // we need to clean this up dawg...
     this.location = location;
     this.radius = 10;
     this.diameter = this.radius * 2;
@@ -31,6 +32,7 @@ class Ripple {
   }
 
   update() {
+    // What we can probably do is
     //every frame we want to increase the size of the ripple by speed
     this.radius = this.radius + this.speed;
 
